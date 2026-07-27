@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOLUSHKA ROYAL | Премиум Тапсырыс Қабылдау</title>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark: #111111;
+            --grey: #1A1A1A;
+            --text: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--grey);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        header h1 {
+            color: var(--gold);
+            font-size: 2rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .intro h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+
+        /* Тапсырыс Формасының Стилі */
+        .order-form {
+            background-color: var(--grey);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        input[type="text"], input[type="tel"], input[type="date"], select {
+            width: 100%;
+            padding: 12px;
+            background-color: #222;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--gold);
+        }
+
+        /* Чекбокстар (Таңдау элементтері) */
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--gold);
+        }
+
+        .checkbox-item input {
+            accent-color: var(--gold);
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Жіберу Батырмасы */
+        .submit-btn {
+            width: 100%;
+            background-color: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>👑 ZOLUSHKA ROYAL</h1>
+        <p>Әр сәтті ұмытылмас естелікке айналдырамыз</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Арнайы тапсырыс беру жүйесі</h2>
+            <p>Өзіңізге қажетті қызметтерді белгілеп, тапсырыс жіберіңіз. Біз сізбен лезде байланысамыз.</p>
+        </div>
+
+        <!-- ТАПСЫРЫС ФОРМАСЫ -->
+        <form class="order-form" id="royalForm" onsubmit="sendToWhatsApp(event)">
+            
+            <!-- 1. Клиент мәліметтері -->
+            <div class="form-group">
+                <label for="clientName">Аты-жөніңіз:</label>
+                <input type="text" id="clientName" placeholder="Мысалы: Арман" required>
+            </div>
+
+            <div class="form-group">
+                <label for="clientPhone">Телефон нөміріңіз (WhatsApp):</label>
+                <input type="tel" id="clientPhone" placeholder="+7 (707) 000-00-00" required>
+            </div>
+
+            <div class="form-group">
+                <label for="eventDate">Іс-шара өтетін күн:</label>
+                <input type="date" id="eventDate" required>
+            </div>
+
+            <!-- 2. Іс-шара түрі -->
+            <div class="form-group">
+                <label for="eventType">Іс-шара түрі:</label>
+                <select id="eventType" required>
+                    <option value="" disabled selected>Таңдаңыз...</option>
+                    <option value="Proposal (Ұсыныс жасау)">Proposal (Ұсыныс жасау)</option>
+                    <option value="Үйлену тойы">Үйлену тойы</option>
+                    <option value="Қыз ұзату">Қыз ұзату</option>
+                    <option value="Басқа іс-шара">Басқа іс-шара</option>
+                </select>
+            </div>
+
+            <!-- 3. Қызметтерді таңдау -->
+            <div class="form-group">
+                <label>Қажетті премиум қызметтерді белгілеңіз:</label>
+                <div class="checkbox-grid">
+                    
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="services" value="Proposal ұйымдастыру (Толық)">
+                        <span>Proposal ұйымдастыру</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="services" value="Премиум эффекттер (Түтін, Отшашу)">
+                        <span>Премиум эффекттер</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="services" value="Жанды домбыра">
+                        <span>Жанды домбыра</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="services" value="Жанды гитара">
+                        <span>Жанды гитара</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="services" value="Фото және Видео түсірілім">
+                        <span>Фото & Видео атмосфера</span>
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- Жіберу батырмасы -->
+            <button type="submit" class="submit-btn">Тапсырысты WhatsApp-қа жолдау 🚀</button>
+
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2026 ZOLUSHKA ROYAL. Барлық құқықтар қорғалған.
+    </footer>
+
+    <!-- JAVASCRIPT: Мәліметтерді өңдеп, WhatsApp-қа жіберу -->
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault(); // Форма өздігінен қайта жүктелмеуі үшін
+
+            // Формадан мәліметтерді алу
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const date = document.getElementById('eventDate').value;
+            const eventType = document.getElementById('eventType').value;
+            
+            // Белгіленген чекбокстарды жинау
+            const checkboxes = document.querySelectorAll('input[name="services"]:checked');
+            let selectedServices = [];
+            checkboxes.forEach((checkbox) => {
+                selectedServices.push(checkbox.value);
+            });
+
+            // Егер ештеңе таңдалмаса
+            if(selectedServices.length === 0) {
+                selectedServices.push("Қызметтер таңдалмады (Кеңес алу қажет)");
+            }
+
+            // Менеджердің WhatsApp нөмірі (Осы жерге өзіңіздің нөміріңізді жазыңыз)
+            // Формат: тек сандар, плюс белгісіз. Мысалы: 79290993674 немесе 77071234567
+            const managerNumber = "79290993674"; 
+
+            // WhatsApp-қа баратын дайын хабарлама мәтіні
+            const message = `👑 *ZOLUSHKA ROYAL - ЖАҢА ТАПСЫРЫС* 👑%0A%0A` +
+                            `👤 *Клиент:* ${name}%0A` +
+                            `📞 *Телефон:* ${phone}%0A` +
+                            `📅 *Күні:* ${date}%0A` +
+                            `🎪 *Шара түрі:* ${eventType}%0A%0A` +
+                            `✨ *Таңдалған қызметтер:*%0A` + selectedServices.map(s => `- ${s}`).join('%0A');
+
+            // Ссылка құрастыру және WhatsApp-қа бағыттау
+            const whatsappUrl = `https://wa.me{managerNumber}?text=${message}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>
