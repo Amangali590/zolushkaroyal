@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOLUSHKA ROYAL | Premium Show & Investment</title>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark: #111111;
+            --grey: #1A1A1A;
+            --text: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--grey);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        header h1 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 40px 0 20px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .order-form {
+            background-color: var(--grey);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            margin-bottom: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        input[type="text"], input[type="tel"], input[type="date"], select {
+            width: 100%;
+            padding: 14px;
+            background-color: #222;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--gold);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            background-color: #222;
+            padding: 18px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .checkbox-item input {
+            accent-color: var(--gold);
+            width: 20px;
+            height: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 18px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .submit-btn:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .invest-card {
+            background-color: var(--grey);
+            border: 2px solid var(--gold);
+            padding: 40px 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.1);
+        }
+
+        .invest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .invest-item {
+            background-color: #151515;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            text-align: center;
+        }
+
+        .invest-item h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .invest-item p {
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        .proposal-text {
+            margin-top: 20px;
+            font-size: 1.05rem;
+            color: #e0e0e0;
+            border-left: 3px solid var(--gold);
+            padding-left: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #555;
+            font-size: 0.85rem;
+            margin-top: 50px;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>👑 ZOLUSHKA ROYAL</h1>
+        <p>«Превращаем каждый момент в незабываемое воспоминание»</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="intro">
+            <h2>Расчет индивидуального заказа</h2>
+            <p>Заполните форму ниже, выберите необходимые спецэффекты и музыку, чтобы мгновенно отправить заявку организатору.</p>
+        </div>
+
+        <form class="order-form" id="royalForm" onsubmit="sendToWhatsApp(event)">
+            <div class="form-group">
+                <label for="clientName">Ваше имя и фамилия:</label>
+                <input type="text" id="clientName" placeholder="Например: Арман Алиев" required>
+            </div>
+
+            <div class="form-group">
+                <label for="clientPhone">Номер телефона (WhatsApp):</label>
+                <input type="tel" id="clientPhone" placeholder="Например: +7 (707) 123-45-67" required>
+            </div>
+
+            <div class="form-group">
+                <label for="eventDate">Планируемая дата события:</label>
+                <input type="date" id="eventDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="eventType">Формат мероприятия:</label>
+                <select id="eventType" required>
+                    <option value="" disabled selected>Выберите формат...</option>
+                    <option value="Proposal (Красивое предложение руки и сердца)">Proposal (Предложение)</option>
+                    <option value="Свадьба (Үйлену тойы)">Свадьба (Үйлену тойы)</option>
+                    <option value="Кыз узату (Проводы невесты)">Кыз узату (Проводы)</option>
+                    <option value="Юбилей / День рождения">Юбилей / День рождения</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Выберите элементы шоу и эффекты:</label>
+                <div class="checkbox-grid">
+                    <label class="checkbox-item"><input type="checkbox" name="services" value="Организация Proposal под ключ"><span>Организация Proposal</span></label>
+                    <label class="checkbox-item"><input type="checkbox" name="services" value="Премиум эффекты (Тяжелый дым, фонтаны)"><span>Премиум спецэффекты</span></label>
+                    <label class="checkbox-item"><input type="checkbox" name="services" value="Живое исполнение на домбре"><span>Живая домбра 🪕</span></label>
+                    <label class="checkbox-item"><input type="checkbox" name="services" value="Живое исполнение на гитаре"><span>Живая гитара 🎸</span></label>
+                    <label class="checkbox-item"><input type="checkbox" name="services" value="Фото и видео сопровождение"><span>Фото & Видео атмосфера 📸</span></label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Отправить расчет в WhatsApp 🚀</button>
+        </form>
+
+        <h2 class="section-title">👑 ИНВЕСТИЦИОННОЕ ПРЕДЛОЖЕНИЕ</h2>
+        
+        <div class="invest-card">
+            <h2>О Проекте ZOLUSHKA ROYAL</h2>
+            <p class="proposal-text">
+                Мы объединили премиальные визуальные спецэффекты (тяжёлый дым, холодные фонтаны) и высококлассное живое музыкальное сопровождение (домбра, гитара) в один эксклюзивный бренд. Мы закрываем боли клиентов «под ключ», избавляя их от поиска множества подрядчиков.
+            </p>
+
+            <div class="invest-grid">
+                <div class="invest-item">
+                    <h3>Высокая маржа</h3>
+                    <p>Низкая себестоимость расходных материалов обеспечивает высокую доходность с каждого премиум-чека.</p>
+                </div>
+                <div class="invest-item">
+                    <h3>Масштабируемость</h3>
+                    <p>Готовая бизнес-модель для быстрой экспансии и запуска франшизы в других регионах и городах.</p>
+                </div>
+                <div class="invest-item">
+                    <h3>Твердые активы</h3>
+                    <p>Инвестиции направляются в ликвидное оборудование, музыкальные инструменты и долгосрочные активы.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <p style="color: var(--gold); font-weight: bold; font-size: 1.1rem; margin-bottom: 15px;">Хотите стать партнером или инвестором проекта?</p>
+                <button onclick="contactInvestor()" class="submit-btn" style="background-color: transparent; border: 2px solid var(--gold); color: var(--gold); max-width: 400px;">Связаться по поводу инвестиций 💼</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2026 ZOLUSHKA ROYAL. Все права защищены.
+    </footer>
+
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('clientName').value;
